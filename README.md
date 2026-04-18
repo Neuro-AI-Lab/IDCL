@@ -58,6 +58,8 @@ loss_at = loss_fn(text_feat, audio_feat)   # text → audio
 loss = (loss_ta + loss_at) / 2.0
 ```
 
+<br>
+
 ## 📝 Abstract
 Multimodal Emotion Recognition in Conversations (MERC) is challenging due to the complex interplay between modalities and the critical role of contextual information. While previous studies have primarily focused on context within a single conversation (intra-dialog), this work explores a new dimension: the contextual information shared across different conversations. 
 
