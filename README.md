@@ -16,7 +16,7 @@
 ---
 
 ## 📢 News
-* **[Apr. 2026]** 🚀 The official code released.
+* **[Apr. 2026]** 🚀 **The official code released!**
 * **[Mar, 2026]** 🎉 Our paper **"INTER-DIALOG CONTRASTIVE LEARNING FOR MULTIMODAL EMOTION RECOGNITION IN CONVERSATIONS"** has been accepted for an oral presentation at **ICASSP 2026**! See you in Barcelona, Spain!
 * **[Jan, 2026]** 🎉 Our paper **"INTER-DIALOG CONTRASTIVE LEARNING FOR MULTIMODAL EMOTION RECOGNITION IN CONVERSATIONS"** has been accepted to **ICASSP 2026**!
 
