@@ -32,6 +32,11 @@ pip install git+https://github.com/hyuki0003/IDCL.git@official
 
 ### Quick Start
 
+| Argument | Type | Description |
+|---|---|---|
+| `K` | int | Number of top-K neighbors used as positives |
+| `temperature` | float | Softmax temperature τ |
+
 ```python
 from idcl import IDCL
 
@@ -43,18 +48,9 @@ loss_fn = IDCL(K=15, temperature=0.05)
 loss = loss_fn(audio_feat, text_feat)
 ```
 
-### Arguments
-
-| Argument | Type | Description |
-|---|---|---|
-| `K` | int | Number of top-K neighbors used as positives |
-| `temperature` | float | Softmax temperature τ |
-
-### Two-directional Loss
+### Multimodal Alignment
 
 ```python
-loss_fn = IDCL(K=15, temperature=0.05)
-
 loss_ta = loss_fn(audio_feat, text_feat)   # audio → text
 loss_at = loss_fn(text_feat, audio_feat)   # text → audio
 loss = (loss_ta + loss_at) / 2.0
