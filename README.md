@@ -30,12 +30,14 @@ You can install the IDCL loss function directly from GitHub:
 pip install git+https://github.com/hyuki0003/IDCL.git@official
 ```
 
-### Quick Start
+### Argument
 
 | Argument | Type | Description |
 |---|---|---|
 | `K` | int | Number of top-K neighbors used as positives |
 | `temperature` | float | Softmax temperature τ |
+
+### Quick Start
 
 ```python
 from idcl import IDCL
