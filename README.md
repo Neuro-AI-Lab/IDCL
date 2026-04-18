@@ -22,6 +22,44 @@
 
 ---
 
+## 📦 Package Usage
+
+You can install the IDCL loss function directly from GitHub:
+
+```bash
+pip install git+https://github.com/hyuki0003/IDCL.git@official
+```
+
+### Quick Start
+
+```python
+from idcl import IDCL
+
+# Initialize
+loss_fn = IDCL(K=15, temperature=0.05)
+
+# Forward pass
+# anchor, modality: [B, L, D]  (batch, sequence length, feature dim)
+loss = loss_fn(audio_feat, text_feat)
+```
+
+### Arguments
+
+| Argument | Type | Description |
+|---|---|---|---|
+| `K` | int | Number of top-K neighbors used as positives |
+| `temperature` | float | Softmax temperature τ |
+
+### Two-directional Loss (as used in paper)
+
+```python
+loss_fn = IDCL(K=15, temperature=0.05)
+
+loss_ta = loss_fn(audio_feat, text_feat)   # audio → text
+loss_at = loss_fn(text_feat, audio_feat)   # text → audio
+loss = (loss_ta + loss_at) / 2.0
+```
+
 ## 📝 Abstract
 Multimodal Emotion Recognition in Conversations (MERC) is challenging due to the complex interplay between modalities and the critical role of contextual information. While previous studies have primarily focused on context within a single conversation (intra-dialog), this work explores a new dimension: the contextual information shared across different conversations. 
 
@@ -58,9 +96,4 @@ To validate the explicit contribution of our proposed **Inter-Dialog Contrastive
 > 1.  **Intrinsic Robustness:** Comparing **(B)** with **(A)**, IDCL alone improved accuracy by **1.7%** (4-way), proving that the IDCL objective effectively learns robust representations by leveraging inter-dialog context, even without external data.
 > 2.  **Synergy with Pre-training:** The proposed full model **(C)** achieved the highest performance (+5.1% over baseline), confirming a strong synergy between IDCL and transfer learning strategies.
 
-## 🗓️ To-Do List
-We are currently organizing the code for release.
-- [ ] Upload requirements
-- [ ] Upload usage
-- [ ] Upload IDCL training code
 ---
