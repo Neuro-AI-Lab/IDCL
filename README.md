@@ -50,7 +50,7 @@ loss = loss_fn(audio_feat, text_feat)
 | `K` | int | Number of top-K neighbors used as positives |
 | `temperature` | float | Softmax temperature τ |
 
-### Two-directional Loss (as used in paper)
+### Two-directional Loss
 
 ```python
 loss_fn = IDCL(K=15, temperature=0.05)
