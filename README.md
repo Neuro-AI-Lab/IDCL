@@ -16,9 +16,9 @@
 ---
 
 ## 📢 News
+* **[Apr. 2026]** 🚀 **The official code released!**
 * **[Mar, 2026]** 🎉 Our paper **"INTER-DIALOG CONTRASTIVE LEARNING FOR MULTIMODAL EMOTION RECOGNITION IN CONVERSATIONS"** has been accepted for an oral presentation at **ICASSP 2026**! See you in Barcelona, Spain!
 * **[Jan, 2026]** 🎉 Our paper **"INTER-DIALOG CONTRASTIVE LEARNING FOR MULTIMODAL EMOTION RECOGNITION IN CONVERSATIONS"** has been accepted to **ICASSP 2026**!
-* **[Coming Soon]** 🚀 The official code and pre-trained models for **IDCL** will be released soon.
 
 ---
 
@@ -29,6 +29,13 @@ You can install the IDCL loss function directly from GitHub:
 ```bash
 pip install git+https://github.com/hyuki0003/IDCL.git@official
 ```
+
+### Argument
+
+| Argument | Type | Description |
+|---|---|---|
+| `K` | int | Number of top-K neighbors used as positives |
+| `temperature` | float | Softmax temperature τ |
 
 ### Quick Start
 
@@ -43,22 +50,15 @@ loss_fn = IDCL(K=15, temperature=0.05)
 loss = loss_fn(audio_feat, text_feat)
 ```
 
-### Arguments
-
-| Argument | Type | Description |
-|---|---|---|
-| `K` | int | Number of top-K neighbors used as positives |
-| `temperature` | float | Softmax temperature τ |
-
-### Two-directional Loss
+### Multimodal Alignment
 
 ```python
-loss_fn = IDCL(K=15, temperature=0.05)
-
 loss_ta = loss_fn(audio_feat, text_feat)   # audio → text
 loss_at = loss_fn(text_feat, audio_feat)   # text → audio
 loss = (loss_ta + loss_at) / 2.0
 ```
+
+<br>
 
 ## 📝 Abstract
 Multimodal Emotion Recognition in Conversations (MERC) is challenging due to the complex interplay between modalities and the critical role of contextual information. While previous studies have primarily focused on context within a single conversation (intra-dialog), this work explores a new dimension: the contextual information shared across different conversations. 

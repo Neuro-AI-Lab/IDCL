@@ -5,34 +5,6 @@ import torch.nn.functional as F
 import math
 
 
-class MaskedKLDivLoss(nn.Module):
-    def __init__(self):
-        super(MaskedKLDivLoss, self).__init__()
-        self.loss = nn.KLDivLoss(reduction='sum')
-
-    def forward(self, log_pred, target, mask):
-        mask_ = mask.view(-1, 1)
-        loss = self.loss(log_pred * mask_, target * mask_) / torch.sum(mask)
-        return loss
-
-
-class MaskedNLLLoss(nn.Module):
-    def __init__(self, weight=None):
-        super(MaskedNLLLoss, self).__init__()
-        self.register_buffer('weight', weight) if weight is not None else None
-        self.loss = nn.NLLLoss(reduction='sum')
-
-    def forward(self, pred, target, mask):
-        device = pred.device  # 모델이 작동하는 장치를 가져옴 (CUDA 또는 CPU)
-
-        mask = mask.to(device)
-        target = target.to(device)
-        mask_ = mask.view(-1, 1)
-
-        loss = self.loss(pred * mask_, target) / torch.sum(mask)
-
-        return loss
-
 def gelu(x):
     return 0.5 * x * (1 + torch.tanh(math.sqrt(2 / math.pi) * (x + 0.044715 * torch.pow(x, 3))))
 
