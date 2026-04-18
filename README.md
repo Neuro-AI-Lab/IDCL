@@ -46,7 +46,7 @@ loss = loss_fn(audio_feat, text_feat)
 ### Arguments
 
 | Argument | Type | Description |
-|---|---|---|---|
+|---|---|---|
 | `K` | int | Number of top-K neighbors used as positives |
 | `temperature` | float | Softmax temperature τ |
 
